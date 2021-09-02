@@ -8,10 +8,10 @@
 *  Semester:         Fall 2021
 * 
 *  Description:
-*        
+*        This program
 * 
 *  Usage:
-*        
+*        N/A
 * 
 *  Files:            (list of all source files used in this program)
                       main.cpp
@@ -21,7 +21,26 @@
 
 using namespace std;
 
-
+/**
+ * Class Name
+ * 
+ * Description:
+ *      Description of your class and what it does
+ * 
+ * Public Methods:
+ *                          CircularArrayQue()
+ *                          CircularArrayQue(int size)
+ *      void                Push(int item)
+ *      int                 Pop()
+ * 
+ * Private Methods:
+ *      void                init(int size = 0)
+ * 
+ * Usage: 
+ * 
+ *      CircularArrayQue                        // Creates instance of CircularArrayQue
+ *      
+ */
 class CircularArrayQue {
 private:
     int *Container;
