@@ -8,7 +8,10 @@
 *  Semester:         Fall 2021
 * 
 *  Description:
-*        This program
+*        This program uses a class that creates a circular array that acts
+*        as though it were a queue. Using the operator function, the class 
+*        gets printed out to the out stream without using a print or Pop
+*        function.
 * 
 *  Usage:
 *        N/A
@@ -167,12 +170,12 @@ public:
  *      int      :  the integer that was just removed
  */
     int Pop() {
-        int temp = Container[Front];
-        Front = (Front + 1) % QueSize;
-        CurrentSize--;
+        int temp = Container[Front];    // Assigns temp the Front
+        Front = (Front + 1) % QueSize;  // Reassigns the Front
+        CurrentSize--;                  // Updates size
         return temp;
     }
-    friend ostream &operator<<(ostream &os, const CircularArrayQue &other);
+    friend ostream &operator<<(ostream &os, const CircularArrayQue &other); // Gives access to operator
 };
 
 /**
@@ -184,7 +187,10 @@ public:
  *      using the "Pop" function.
  * 
  * Params:
- *      ostream  :  object passed by reference to be sent to the out stream
+ *      ostream                   :  object passed by reference to be 
+ *                                   sent to the out stream
+ *      const CircularArrayQueue  :  class Instance passed by reference 
+ *                                   that can't be changed
  * 
  * Returns:
  *      nothing  : void
