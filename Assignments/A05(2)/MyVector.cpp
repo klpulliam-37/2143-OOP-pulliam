@@ -1,4 +1,4 @@
-#include <MyVector.h>
+#include "MyVector.h"
 
 /**
  * @brief Default Constructor 
@@ -10,7 +10,7 @@
  */
 MyVector::MyVector() {
     head = NULL;  // NULL = zeros
-                  // and zeros imply empty
+                    // and zeros imply empty
 }
 
 /**
@@ -45,7 +45,12 @@ MyVector::MyVector(int A[], int size) {
  */
 MyVector::MyVector(string fileName) {
     ifstream inFile(fileName);
+    head = NULL;  // NULL = zeros
+                    // and zeros imply empty
+    
+    while(!fileName.eof()) {
 
+    }
 }
 
 
