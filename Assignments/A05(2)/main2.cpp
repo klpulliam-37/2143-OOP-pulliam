@@ -24,17 +24,29 @@
 
 using namespace std;
 
-// Node for our linked list
-struct node {
-    int data;  // data value (could be a lot more values)
+// // Node for our linked list
+// struct node {
+//     int data;  // data value (could be a lot more values)
 
-    node* next;  // we always need a "link" in a linked list
+//     node* next;  // we always need a "link" in a linked list
 
-    node(int x) {  // cunstructor to make adding values easy
-        data = x;
-        next = NULL;
-    }
+//     node(int x) {  // cunstructor to make adding values easy
+//         data = x;
+//         next = NULL;
+//     }
+// };
+
+struct node{
+      int data;
+      node *next;
+      node *prev;
+      node(int x, node* n = nullptr, node *p = nullptr){
+      data = x;
+      next = n;
+      prev = p;
+      }
 };
+
 
 /**
  * @brief Load array with values from a file
@@ -82,7 +94,9 @@ void printArr(int* arr, int size) {
 
 class LinkedList {
 private:
-    node* head;  // base pointer of list
+    node* head;      // base pointer of list
+    node* tail;      // ending pointer of list
+    int counter = 0; // keeps track of the size
 public:
     /**
      * @brief Default Constructor 
@@ -95,6 +109,7 @@ public:
     LinkedList() {
         head = NULL;  // NULL = zeros
                       // and zeros imply empty
+        tail = NULL;
     }
 
     /**
@@ -117,6 +132,49 @@ public:
         }
     }
 
+    /**
+     * @brief Overloaded Constructor 
+     * 
+     * Creates a new Linked List object from 
+     * an infile that has the array size defined in it.
+     * 
+     * @param string fileName - input file for data
+     * 
+     * @return void
+     */
+    LinkedList(string fileName) {
+        head = NULL;  // NULL = zeros
+                      // and zeros imply empty
+
+        int size = 0;
+        ifstream inFile;
+        inFile.open(fileName); // Opens the file
+        inFile >> size;        // Gets the size for the array
+        int* tempArr = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            inFile >> tempArr[i];
+            Push(tempArr[i]);
+        }
+        delete tempArr;
+    }
+
+    // There's one problem with this constructor ***
+    LinkedList(LinkedList &L1) {
+        head = NULL;
+        
+        node* tempPtr = L1.head;
+
+        while(tempPtr) {
+            Prepend(tempPtr->data);
+            tempPtr = tempPtr->next;
+
+            std::cout << "temp: " << tempPtr->data << "\n";
+        }
+
+        
+    }
+
     void Push(int x) {
         node* tempPtr = new node(x);  // create a new node and
                                       // add data to it
@@ -133,8 +191,22 @@ public:
         }
     }
 
+    void Prepend(int x) {
+        if(head == nullptr){
+            head = new node(x, head);
+            tail = head;
+        }
+        else{
+            node *temPtr = new node(x, head);
+            head->prev = temPtr;
+            head = temPtr;
+        }
+    }
+
     void print() {
         node* temp = head;  // temp pointer copies head
+
+        cout << "printing: \n";
 
         while (temp) {  // this loops until temp is NULL
                         // same as `while(temp != NULL)`
@@ -144,8 +216,11 @@ public:
                 cout << "->";
             }
             temp = temp->next;  // move to next node
+
+            
         }
-        cout << endl;
+
+
     }
 
     ~LinkedList() {
@@ -153,23 +228,41 @@ public:
 };
 
 int main() {
+    //LinkedList L("input.dat");
+    // L.Prepend(69);
+
+    cout << "here\n";
+
     int        A[] = {1, 2, 3, 4, 5, 6};    // array initialized with 1-6
-    LinkedList L(A, 6);                     // linked list built with array
+    LinkedList L(A, 6);   
+    
+                      // linked list built with array
+
+                      
+
 
     L.print();  // print the list
 
-    int* B;     // Int pointer to reference a linked list
-    int  size;  // used to hold a count for list and array
+    
+    
 
-    loadArr("input.dat", B, size);  // Stand alone function to
-                                    //    read values in from file
-    printArr(B, size);              // Stand alone function to print array
-    LinkedList L2(B, size);         // Create 2nd instance of list
-    L2.print();                     // Print list 2
+    LinkedList L2(L);
+
+   
+    L2.print();
+
+    // int* B;     // Int pointer to reference a linked list
+    // int  size;  // used to hold a count for list and array
+
+    // loadArr("input.dat", B, size);  // Stand alone function to
+    //                                 //    read values in from file
+    // printArr(B, size);              // Stand alone function to print array
+    // LinkedList L2(B, size);         // Create 2nd instance of list
+    // L2.print();                     // Print list 2
 }
 
 /*
-Test
+Test Code
 int x = 0;
 
 MyVector v1;

@@ -53,6 +53,17 @@ MyVector::MyVector(string fileName) {
     }
 }
 
+void MyVector::Prepend(int x) {
+    if(head == nullptr){
+        head = new node(x, head);
+        tail = head;
+    }
+    else{
+        node *temPtr = new node(x, head);
+        head->prev = temPtr;
+        head = temPtr;
+    }
+}
 
 void MyVector::Push(int x) {
     node* tempPtr = new node(x);  // create a new node and
@@ -85,5 +96,5 @@ void MyVector::Print() {
     cout << endl;
 }
 
-~LinkedList() {
+MyVector::~MyVector() {
 }
