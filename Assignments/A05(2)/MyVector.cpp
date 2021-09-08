@@ -54,7 +54,7 @@ MyVector::MyVector(string fileName) {
 }
 
 
-void Push(int x) {
+void MyVector::Push(int x) {
     node* tempPtr = new node(x);  // create a new node and
                                     // add data to it
 
@@ -70,7 +70,7 @@ void Push(int x) {
     }
 }
 
-void print() {
+void MyVector::Print() {
     node* temp = head;  // temp pointer copies head
 
     while (temp) {  // this loops until temp is NULL

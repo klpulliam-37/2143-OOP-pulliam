@@ -25,18 +25,6 @@
 
 using namespace std;
 
-// Node for our linked list
-struct node {
-    int data;  // data value (could be a lot more values)
-
-    node* next;  // we always need a "link" in a linked list
-
-    node(int x) {  // cunstructor to make adding values easy
-        data = x;
-        next = NULL;
-    }
-};
-
 /**
  * @brief Load array with values from a file
  * 
@@ -85,7 +73,7 @@ int main() {
     int        A[] = {1, 2, 3, 4, 5, 6};    // array initialized with 1-6
     MyVector L(A, 6);                     // linked list built with array
 
-    L.print();  // print the list
+    L.Print();  // print the list
 
     int* B;     // Int pointer to reference a linked list
     int  size;  // used to hold a count for list and array
@@ -93,8 +81,8 @@ int main() {
     loadArr("input.dat", B, size);  // Stand alone function to
                                     //    read values in from file
     printArr(B, size);              // Stand alone function to print array
-    LinkedList L2(B, size);         // Create 2nd instance of list
-    L2.print();                     // Print list 2
+    MyVector L2(B, size);         // Create 2nd instance of list
+    L2.Print();                     // Print list 2
 }
 
 /*
