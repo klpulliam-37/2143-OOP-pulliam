@@ -504,6 +504,10 @@ int main() {
   int x = 0;
   ofstream outFile("test.out");
 
+  outFile << "2143\n"
+            << "P01\n"
+            << "Kolten Pulliam\n\n";
+
   MyVector v1;
   v1.pushFront(18);
   v1.pushFront(20);
