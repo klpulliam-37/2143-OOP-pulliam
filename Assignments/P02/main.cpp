@@ -890,7 +890,7 @@ int main() {
 
   ofstream outFile("test.out");
   outFile << "2143\n"
-          << "P01\n"
+          << "P02\n"
           << "Kolten Pulliam\n\n";
 
   int a1[] = { 1, 2, 3, 4, 5 };
