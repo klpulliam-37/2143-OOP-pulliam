@@ -2,7 +2,7 @@
 *                    
 *  Author:           Kolten Pulliam
 *  Email:            klpulliam44@gmail.com
-*  Label:            A05
+*  Label:            P01
 *  Title:            Program 1 - MyVector Class
 *  Course:           2143-Object-Oriented-Programming
 *  Semester:         Fall 2021
