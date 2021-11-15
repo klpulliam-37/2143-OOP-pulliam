@@ -1,4 +1,6 @@
 INVADER Que Empty...
+Number of Attackers: 1228
+Number of Defenders: 60
 Defenders Win!
 
 Fight Ended...
