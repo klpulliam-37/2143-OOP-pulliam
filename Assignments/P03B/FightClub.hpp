@@ -29,6 +29,7 @@ class Attackers {
     vector<BaseCharacter> que;
     BaseCharacter* atkr;
     int totalAtkrs;
+    int initAtkrs;
   
   public:
     friend class FightClub;
@@ -51,6 +52,8 @@ class Attackers {
           atkr = new DragonBorn();
         }
       }
+      totalAtkrs = que.size();
+      initAtkrs = totalAtkrs;
     }
 
     Attackers(ifstream& inFile) {
@@ -75,8 +78,8 @@ class Attackers {
         }
         que.push_back(*atkr);
       }
-      
       totalAtkrs = que.size();
+      initAtkrs = totalAtkrs;
     }
 
     void PrintQue() {
@@ -107,6 +110,7 @@ class Defenders {
     vector<BaseCharacter> que;
     BaseCharacter* dndr;
     int totalDndrs;
+    int initDndrs;
 
   public:
     friend class FightClub;
@@ -114,6 +118,7 @@ class Defenders {
     Defenders(int numAtkrs) {
       if (numAtkrs <= 100) {
         totalDndrs = 5;
+        initDndrs = totalDndrs;
         for (int i = 0; i < totalDndrs; i++) {
           if (i % 5 == 0) {
             dndr = new Warrior();
@@ -135,6 +140,7 @@ class Defenders {
       }
       if (numAtkrs > 100) {
         totalDndrs = round(numAtkrs / 100) * 5;
+        initDndrs = totalDndrs;
         for (int i = 0; i < totalDndrs; i++) {
           if (i % 5 == 0) {
             dndr = new Warrior();
@@ -286,9 +292,12 @@ class FightClub {
         CaptainBase->TakeDamage(Invader->weapon->use());
         if (CaptainBase->hp <= 0) {
           if (DQue->que.empty()) {
-              bgameOver = true;
-              gameOver('A');
-              return;
+            cout << "DEFENDER Que Empty...\n";
+            cout << "Number of Attackers: " << AQue->initAtkrs << '\n';
+            cout << "Number of Defenders: " << DQue->initDndrs << '\n';
+            bgameOver = true;
+            gameOver('A');
+            return;
           }else{
             RemoveDef(capElem);
             DisplayFight(); 
@@ -296,6 +305,9 @@ class FightClub {
               CaptainBase = &DQue->que.at(0);
               capElem = 0;
             }else{
+              cout << "DEFENDER Que Empty...\n";
+              cout << "Number of Attackers: " << AQue->initAtkrs << '\n';
+              cout << "Number of Defenders: " << DQue->initDndrs << '\n';
               bgameOver = true;
               gameOver('A');
               return;
@@ -305,9 +317,10 @@ class FightClub {
           // Defender then deals damage to attacker
           Invader->TakeDamage(CaptainBase->weapon->use());
           if (Invader->hp <= 0) {
-
             if (AQue->que.empty()) {
               cout << "INVADER Que Empty...\n";
+              cout << "Number of Attackers: " << AQue->initAtkrs << '\n';
+              cout << "Number of Defenders: " << DQue->initDndrs << '\n';
               bgameOver = true;
               gameOver('D');
               return;
@@ -319,6 +332,8 @@ class FightClub {
                 invElem = 0;
               }else{
                 cout << "INVADER Que Empty...\n";
+                cout << "Number of Attackers: " << AQue->initAtkrs << '\n';
+                cout << "Number of Defenders: " << DQue->initDndrs << '\n';
                 bgameOver = true;
                 gameOver('D');
                 return;
