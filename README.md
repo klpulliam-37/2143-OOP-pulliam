@@ -3,6 +3,6 @@
 #### Repo: 2143 Object Oriented Repo
 #### Email: klpulliam44@gmail.com
 #### Image:
-![Kolten Pulliam](C:\Users\Kolten\Pictures\RA Board of Staff Pics\Ireland.jpg)
+![Kolten Pulliam](Ireland.jpg)
 #### Avatar:
 ![Avatar]()
