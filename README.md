@@ -5,4 +5,4 @@
 #### Image:
 ![Kolten Pulliam](images/Ireland.jpg)
 #### Avatar:
-![Avatar](images/logo kl-Updated.png)
+![Avatar](images/logo kl Updated.png)
